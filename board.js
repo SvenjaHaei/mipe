@@ -83,18 +83,16 @@ class Carousel {
     this.topCard.style.transform =
       'translateX(' + posX + 'px) translateY(' + posY + 'px) rotate(' + deg + 'deg)'
 
-    var images = document.getElementsByTagName('img');  
+    var image = this.topCard.querySelector("img");  
 
-    if (dirX == -1 & images.length == 0){
-      let nope = document.createElement('img')
-      nope.classList.add('nope')
-      nope.src = "images/Nope.png"
-      this.topCard.appendChild(nope)
-    } else if (dirX == 1 & images.length == 0) {
-      let like = document.createElement('img')
-      like.classList.add('like')
-      like.src = "images/Like.png"
-      this.topCard.appendChild(like)
+    if (dirX == -1){
+      image.classList.remove('like')
+      image.src = "images/Nope.png"
+      image.classList.add('nope')
+    } else if (dirX == 1) {
+      image.classList.remove('nope')
+      image.src = "images/Like.png"
+      image.classList.add('like')
     }
 
     if (e.isFinal) {
@@ -139,15 +137,6 @@ class Carousel {
           this.topCard.style.transform =
             'translateX(-50%) translateY(-50%) rotate(0deg)'
 
-          var images = document.getElementsByTagName('img');
-          for(var i=0; i < images.length; i++) {
-            this.topCard.removeChild(images[i]);
-          }
-
-          //if (images.length ){
-          //  this.topCard.innerHTML = ''
-          //}
-
           this.topCard.style.backgroundImage = "url('images/0"+ (this.counter-1) +".png')";
       
         }
@@ -174,6 +163,9 @@ class Carousel {
       subheadline.classList.add('subheadline')
       subheadline.textContent = this.subheadlines[this.counter-1]
       card.appendChild(subheadline)
+
+      let emotion = document.createElement('img')
+      card.appendChild(emotion)
 
       this.board.insertBefore(card, this.board.firstChild)
     }

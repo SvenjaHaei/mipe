@@ -38,7 +38,7 @@ html, body
 }
 
 .card:not(:active) {
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-out;
 }
 
 .headline {
@@ -76,4 +76,8 @@ html, body
   left: 5px;
   pointer-events: none;
   transform: rotate(-10deg);
+}
+
+.card:not(:active) img {
+  display: none
 }
