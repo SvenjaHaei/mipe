@@ -9,6 +9,7 @@ class Carousel {
     this.headlines = ["Beautiful Things", "The Craving", "Houdini", "Espresso", "Birds of a feather"]
     this.subheadlines = ["Benson Boone", "Twenty One Pilots", "Dua Lipa", "Sabrina Carpenter", "Billie Eilish"]
 
+    // add two cards to get started
     this.push()
     this.push()
     
@@ -83,8 +84,9 @@ class Carousel {
     this.topCard.style.transform =
       'translateX(' + posX + 'px) translateY(' + posY + 'px) rotate(' + deg + 'deg)'
 
-    var image = this.topCard.querySelector("img");  
+    let image = this.topCard.querySelector("img");  
 
+    // add nope when swiping left and like when swiping right
     if (dirX == -1){
       image.classList.remove('like')
       image.src = "images/Nope.png"
@@ -132,13 +134,11 @@ class Carousel {
           }, 500)
       
         } else {
-    
+
           // reset card position
           this.topCard.style.transform =
             'translateX(-50%) translateY(-50%) rotate(0deg)'
 
-          this.topCard.style.backgroundImage = "url('images/0"+ (this.counter-1) +".png')";
-      
         }
 
     }
@@ -149,21 +149,25 @@ class Carousel {
     this.counter = this.counter + 1
 
     if(this.counter <= this.amountPictures) {
-      var card = document.createElement('div')
-      card.classList.add('card')
 
+      // add new card to the deck
+      let card = document.createElement('div')
+      card.classList.add('card')
       card.style.backgroundImage = "url('images/0"+ this.counter +".png')"
 
-      var headline = document.createElement('div')
+      // add the song title to the card
+      let headline = document.createElement('div')
       headline.classList.add('headline')
       headline.textContent = this.headlines[this.counter-1]
       card.appendChild(headline)
 
-      var subheadline = document.createElement('div')
+      // add the artist name to the card
+      let subheadline = document.createElement('div')
       subheadline.classList.add('subheadline')
       subheadline.textContent = this.subheadlines[this.counter-1]
       card.appendChild(subheadline)
 
+      // add empty container for nope/like to the card
       let emotion = document.createElement('img')
       card.appendChild(emotion)
 
